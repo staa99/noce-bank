@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 /* Proccess Login */
 router.post('/', function(req, res, next) {
-  console.log('request', req)
+  console.log('request', req.body)
   var email = req.body.email;
   var pass = req.body.password;
   var query = User.findOne({ 'email': email, 'password':pass });
