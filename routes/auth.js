@@ -20,10 +20,15 @@ router.post('/', function(req, res, next) {
   var query = User.findOne({ 'email': email, 'password':pass });
   query.select('id email password');
   query.exec(function (err, user) {
-  if (err) return handleError(err);
-  	console.log('Email: %s, Password: %s', email, password);
+  if (err) {
+    console.log(err);
+    return handleError(err);
+  }
+  else {
+    console.log('Email: %s, Password: %s', email, pass);
   	// res.cookie('logged',user.id);
   	res.redirect('/member');
+  }
   });
 });
 module.exports = router;
