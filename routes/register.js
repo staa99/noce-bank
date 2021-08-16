@@ -21,7 +21,13 @@ router.post('/', function(req, res, next) {
   	email: req.body.email
   });
 
-  user.save();
+  user.save(function (err) {
+    if (err) {
+      console.log(err);
+      return handleError(err);
+    }
+    // saved!
+  });
   res.render('login', { title: 'Login' });
 });
 module.exports = router;
