@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
     console.log(err);
     return handleError(err);
   }
-  else {
+  else if (user) {
     console.log('Email: %s, Password: %s', email, pass);
   	res.cookie('logged',user.id);
   	res.redirect('/member');
